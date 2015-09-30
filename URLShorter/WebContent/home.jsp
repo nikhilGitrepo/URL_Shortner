@@ -9,9 +9,11 @@
 </head>
 <body>
 <form:form action="home.urlview">
-	Long URL : <input type="text" value ="long url"/>
+	Long URL : <input type="text" name="longUrl.url" value ="https://www.facebook.com/hrithikroshan" size="50"/>
 	<br/>
-	<input type="submit" value="Submit Form"/>
+	Short URL : <input type="text" name="shortUrl.url" value ="https://goo.gl/GNE4v9" size="50"/>
+	<br/>
+	<input type="submit" value="Quick Short"/>
 </form:form>
 </body>
 </html>
