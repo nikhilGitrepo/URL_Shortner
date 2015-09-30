@@ -9,7 +9,8 @@
 </head>
 <body>
 <form:form action="home.urlview">
-<input type="text" value ="long url"/>
+	Long URL : <input type="text" value ="long url"/>
+	<br/>
 	<input type="submit" value="Submit Form"/>
 </form:form>
 </body>
