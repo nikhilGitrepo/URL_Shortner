@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">URLator</a>
+          <a class="navbar-brand" href="#">URL Shortener</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -58,7 +58,7 @@
 		<div class ="contentPanel" role="main">
 	 		<!-- Main jumbotron for a primary marketing message or call to action -->
       		<div class="jumbotron">
-       			 <h1>URLator</h1>
+       			 <h1>URL Shortener</h1>
        			 <p>Presenting custom shortened url links</p>
      		</div>
      		
