@@ -44,9 +44,9 @@
               <input type="text" placeholder="Long URL" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Desired Id" class="form-control">
+              <input type="text" placeholder="Desired ID" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">QuckShorten!</button>
+            <button type="submit" class="btn btn-success">Shorten!</button>
           </form:form>
         </div><!--/.nav-collapse -->
       </div>
@@ -61,36 +61,67 @@
        			 <h1>URL Shortener</h1>
        			 <p>Presenting custom shortened url links</p>
      		</div>
+     		<div class="row">
+     		<div class="col-sm-4">
      		
+     		 
+              <form:form action="home.urlview">
+            <div class="form-group">
+              <input type="text" placeholder="Long URL" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Desired ID" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Shorten!</button>
+          </form:form>
+             </div>
+     		
+     	     		
+     		
+     		
+     		
+     		
+     		
+     		
+     		
+     		
+     	<div class="col-sm-8">	
      		<div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Most popular links</h3>
             </div>
             <div class="panel-body">
+             
+              
+              
                <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>URL</th>
-                <th>ID</th>
-              </tr>
-            </thead>
+            
             <tbody>
               <tr>
                 <td>1</td>
-                <td>firstURL</td>
-                <td>firstID</td>
+                <td>
+                <a href="ushort.com/?=myfile">ushort.com/?=myfile</a>
+                </td>
               </tr>
               <tr>
                 <td>2</td>
-                <td>next</td>
-                <td>etc</td>
+                   <td>
+                   <a href="ushort.com/?=myfile">ushort.com/?=funnycatvideo</a>
+                   </td>
               </tr>
          </tbody>
+          
           </table>
+         
             </div>
+            
           </div>
+        </div> <!--  col -->
+        </div> <!--  row -->
+          
 		</div> <!--  content panel -->
+		
+		
     </div><!-- /.container -->
     
 
