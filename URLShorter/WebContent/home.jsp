@@ -32,12 +32,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand nav-urlator" id="home" href="#">URL Shortener</a>
+          <a class="navbar-brand nav-urlator" id="HOME" href="#">URL Shortener</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"></li>
-            <li id="urlmaps" class="nav-urlator"><a href="">URL Maps</a></li>
+            <li id="URL_MAPS" class="nav-urlator"><a href="">URL Maps</a></li>
           </ul>
           <form:form action="home.urlview" class="navbar-form navbar-right">
             <div class="form-group">
