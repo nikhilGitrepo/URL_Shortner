@@ -32,19 +32,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">URL Shortener</a>
+          <a class="navbar-brand nav-urlator" id="home" href="#">URL Shortener</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"></li>
-            <li><a href="#URLMaps">URL Maps</a></li>
+            <li id="urlmaps" class="nav-urlator"><a href="">URL Maps</a></li>
           </ul>
           <form:form action="home.urlview" class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" placeholder="Long URL" class="form-control">
+            
+              <input type="text" placeholder="URL" class="form-control" >
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Desired ID" class="form-control">
+            
+              <input type="text" placeholder="Desired ID" class="form-control" >
             </div>
             <button type="submit" class="btn btn-success">Shorten!</button>
           </form:form>
@@ -55,11 +57,12 @@
    
 
     <div class="container">
+    <div id="mainPanel">
 		<div class ="contentPanel" role="main">
 	 		<!-- Main jumbotron for a primary marketing message or call to action -->
       		<div class="jumbotron">
        			 <h1>URL Shortener</h1>
-       			 <p>Presenting custom shortened url links</p>
+       			 <p class="lead">Presenting custom shortened url links</p>
      		</div>
      		<div class="row">
      		<div class="col-sm-4">
@@ -67,12 +70,14 @@
      		 
               <form:form action="home.urlview">
             <div class="form-group">
-              <input type="text" placeholder="Long URL" class="form-control">
+            <label for="lurlInput">URL</label>
+              <input type="text" placeholder="Long URL" class="form-control" id="lurlInput">
             </div>
             <div class="form-group">
-              <input type="text" placeholder="Desired ID" class="form-control">
+            <label for="idInput">Desired ID</label>
+              <input type="text" placeholder="Desired ID" class="form-control" id="idInput">
             </div>
-            <button type="submit" class="btn btn-success">Shorten!</button>
+            <button type="submit" class="btn btn-default">Shorten!</button>
           </form:form>
              </div>
      		
@@ -100,13 +105,13 @@
               <tr>
                 <td>1</td>
                 <td>
-                <a href="ushort.com/?=myfile">ushort.com/?=myfile</a>
+                <a href="ushort.com/?=myfile">ushort.com/?=umyfile</a>
                 </td>
               </tr>
               <tr>
                 <td>2</td>
                    <td>
-                   <a href="ushort.com/?=myfile">ushort.com/?=funnycatvideo</a>
+                   <a href="ushort.com/?=myfile">ushort.com/?u=funnycatvideo</a>
                    </td>
               </tr>
          </tbody>
@@ -120,7 +125,7 @@
         </div> <!--  row -->
           
 		</div> <!--  content panel -->
-		
+		</div>	<!--  main panel -->
 		
     </div><!-- /.container -->
     
@@ -131,6 +136,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="urlator/js/UrlatorClient.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
   </body>
