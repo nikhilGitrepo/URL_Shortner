@@ -6,10 +6,13 @@ function loadRecentUrl() {
 		success : function(data) {
 			$.each(data, function(i, item) {
 				if (i == '@items') {
-					var htmldiv = "";
+					var count = 1;
+					var htmldiv = "<table class=\"table  table-striped table-hover style=\"overflow:hidden\"><tbody>";
 					$.each(item, function(i, link) {
-						htmldiv += "<ul><a href='" + link + "'>" + link + "</a></ul>";
+						htmldiv += "<tr><td>"+count+"<td><a href='" + link + "'>" + link + "</a></td></tr>";
+						count+=1;
 					});
+					htmldiv+= "</tbody></table>"
 					$("#recentPanelTable").append(htmldiv);
 				}
 			});

@@ -82,15 +82,19 @@
 					</div>
 
 					<div class="col-sm-8">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
+						<div class="panel panel-primary" >
+							<div class="panel-heading" >
 								<h3 class="panel-title">Most popular links</h3>
 							</div>
-							<div class="panel-body" id="mostPopularLinks" style="height: 180px; overflow: hidden;">
-								<div id="recentPanelTable" style="height: 170px;">
+							<div class="panel-body" id="mostPopularLinks" style="height: 180px;">
+								<div id="recentPanelTable" style="height: 160px; ">
+								
 								</div>
 							</div>
 						</div>
+						
+						
+						
 					</div>
 					<!--  col -->
 				</div>
@@ -110,8 +114,9 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="UrlProcess/js/UrlShortenerProcess.js"></script>
 	<script src="UrlProcess/js/UrlatorClient.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="UrlProcess/js/UrlShortenerProcess.js"></script>
+
 </body>
 </html>
