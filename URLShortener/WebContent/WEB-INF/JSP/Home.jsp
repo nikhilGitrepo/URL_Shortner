@@ -47,7 +47,7 @@
 
 						<input type="text" placeholder="Desired ID" class="form-control">
 					</div>
-					<button type="submit" class="btn btn-success">Shorten!</button>
+					<button type="submit" id="topSubmit" class="btn btn-success">Shorten!</button>
 				</form:form>
 			</div>
 			<!--/.nav-collapse -->

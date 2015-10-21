@@ -8,6 +8,10 @@ public class URL {
 	public URL() {
 	}
 
+	public URL(String url) {
+		this.url = url;
+	}
+	
 	public URL(String url, String domainType) {
 		super();
 		this.url = url;
