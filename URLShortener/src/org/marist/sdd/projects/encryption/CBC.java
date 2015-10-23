@@ -10,7 +10,7 @@ public class CBC {
 	private BlockCipher64 bCipher;
 	private byte[] IV;
 	private byte[] counter = new byte[8];
-	private static byte[] key = { (byte)0x6b, (byte)0x72, (byte)0x6c, (byte)0xfe, (byte)0x2a, (byte)0x29, (byte)0xfa, (byte)0xc3 };
+	private byte[] key = { (byte)0x6b, (byte)0x72, (byte)0x6c, (byte)0xfe, (byte)0x2a, (byte)0x29, (byte)0xfa, (byte)0xc3 };
 	
 	/**
 	 * Constructs Chain Block Cipher object with 
