@@ -39,15 +39,15 @@
 					<li id="URL_MAPS" class="nav-urlator"><a href="">URL Maps</a></li>
 				</ul>
 				<form:form action="addurl.urlview" class="navbar-form navbar-right">
-					<div class="form-group">
+					<div class="form-group lurlInput">
 
-						<input type="text" placeholder="URL" class="form-control">
+						<input type="text" placeholder="URL" id="lurlInput" class="form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group idInput">
 
-						<input type="text" placeholder="Desired ID" class="form-control">
+						<input type="text" id="idInput" placeholder="Desired ID" class="form-control">
 					</div>
-					<button type="submit" id="topSubmit" class="btn btn-success">Shorten!</button>
+					<button type="submit" id="navSubmit" class="btn urlBtn btn-success">Shorten!</button>
 				</form:form>
 			</div>
 			<!--/.nav-collapse -->
@@ -67,17 +67,17 @@
 
 
 						<form:form action="control.urlview">
-							<div class="form-group">
+							<div class="form-group lurlInput" id="inputDiv">
 								<label for="lurlInput">URL</label> <input type="text"
 									placeholder="Long URL" name="longUrl.url" class="form-control"
-									id="lurlInput">
+									id="lurlInput2">
 							</div>
-							<div class="form-group">
+							<div class="form-group idInput" >
 								<label for="idInput">Desired ID</label> <input type="text"
 									placeholder="Desired ID" name="desiredId" class="form-control"
-									id="idInput">
+									id="idInput2">
 							</div>
-							<button type="submit" class="btn btn-default">Shorten!</button>
+							<button type="submit" id="panelSubmit" class="btn urlBtn btn-default">Shorten!</button>
 						</form:form>
 					</div>
 
