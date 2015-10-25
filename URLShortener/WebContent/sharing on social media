@@ -1,0 +1,18 @@
+/** 
+  *place the code where you want your buttons to appear in the code
+  */
+
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_pinterest_large' displayText='Pinterest'></span>
+<span class='st_email_large' displayText='Email'></span>
+
+/**
+ *place the code at the end of your "head" tag
+ */
+ 
+ <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "368f030c-3c23-4e08-a39d-c8d33ad7aa64", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
