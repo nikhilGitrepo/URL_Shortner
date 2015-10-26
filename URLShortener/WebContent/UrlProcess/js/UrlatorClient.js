@@ -5,7 +5,8 @@ $(document).ready(function() {
 	     URL_MAPS : 'UrlProcess/js/urlmaps/urlmaps.jsp',
 	     HOME : 'HOME',
 	     BACK_HOME : 'backHome',
-	     URL_SUCCESS : 'UrlProcess/js/submissionResult/submissionResultSuccess.jsp'
+	     URL_SUCCESS : 'UrlProcess/js/submissionResult/submissionResultSuccess.jsp',
+	     URL_FAILURE : 'UrlProcess/js/submissionResult/submissionResultFailed.jsp'
 	    	 };
 
 	    	
@@ -29,26 +30,58 @@ $(document).ready(function() {
         case "navSubmit":
             lUrl=$('#lurlInput').val();
             desiredId=$('#idInput').val();
+            //validate that longurl and shorturl fields are populated, if not show the warning as a modal, since thi
+            // is submitted from the navbar.
+            if(lUrl == "" || desiredId == ""){
+            	var errorMessages = '<div class="alert alert-danger">Missing information: '
+        			if(lUrl==""){
+        				errorMessages+='Long URL';     					
+        			}
+        			if(desiredId ==""){
+        				errorMessages+=' Desired Id';
+        			}  
+        			errorMessages += '</div>';
+        		$('#navErrorMessages').html(errorMessages);
+        		$('#shortenModal').modal('show');
+        		return;
+        	}
+            
             break;
         case "panelSubmit":
         	lUrl=$('#lurlInput2').val();
             desiredId=$('#idInput2').val();
+            //validate that longurl and shorturl fields are populated, if not show the warning in the panel
+        	if(lUrl == "" || desiredId == ""){
+        		var errorMessages = '<div class="alert alert-danger">Missing information: '
+        			if(lUrl==""){
+        				errorMessages+='Long URL';     					
+        			}
+        			if(desiredId ==""){
+        				errorMessages+=' Desired Id';
+        			}        		
+        		errorMessages += '</div>';
+        		$('#errorMessages').html(errorMessages);
+        		return;
+        	}else{
+        		$('#errorMessages').html("");
+        	}
             break;
         default:
             break;
     } 
     	console.log("longurl:"+lUrl);
     	console.log("id:"+ desiredId);
+    	
+    	
     	//Need to query backend for success or failure
     	if(true){
     		$('#mainPanel').load(pageMap.URL_SUCCESS);
     	}else{
-    		
-    	}
-    	
-    	
+    		$('#mainPanel').load(pageMap.URL_FAILURE);
+    	}   	
     	
     });
+    
     
     //Limit id inputs to alphanumeric and _ only
     $(".idInput").keypress(function (e) {

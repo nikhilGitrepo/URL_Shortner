@@ -14,7 +14,7 @@ function setFrameHeight(){
 }
 </script>
 
-<title>MainLayout</title>
+<title>URLShortener</title>
 </head>
 <body onload="setFrameHeight();">
 <div align="center">

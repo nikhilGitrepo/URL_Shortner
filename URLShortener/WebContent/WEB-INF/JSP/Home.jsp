@@ -48,6 +48,7 @@
 						<input type="text" id="idInput" placeholder="Desired ID" class="form-control">
 					</div>
 					<button type="submit" id="navSubmit" class="btn urlBtn btn-success">Shorten!</button>
+					
 				</form:form>
 			</div>
 			<!--/.nav-collapse -->
@@ -55,6 +56,26 @@
 	</nav>
 
 	<div class="container">
+	<!-- Modal -->
+<div id="shortenModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Missing Information</h4>
+      </div>
+      <div class="modal-body">
+        <div id="navErrorMessages"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 		<div id="mainPanel">
 			<div class="contentPanel" role="main">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -64,8 +85,6 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-4">
-
-
 						<form:form action="control.urlview">
 							<div class="form-group lurlInput" id="inputDiv">
 								<label for="lurlInput">URL</label> <input type="text"
@@ -77,8 +96,10 @@
 									placeholder="Desired ID" name="desiredId" class="form-control"
 									id="idInput2">
 							</div>
+							<div id ="errorMessages"></div>
 							<button type="submit" id="panelSubmit" class="btn urlBtn btn-default">Shorten!</button>
 						</form:form>
+						
 					</div>
 
 					<div class="col-sm-8">
