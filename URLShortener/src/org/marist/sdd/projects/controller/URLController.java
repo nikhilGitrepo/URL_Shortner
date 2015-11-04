@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.sf.ehcache.CacheManager;
+
 @Controller
 public class URLController {
 	
@@ -24,6 +26,8 @@ public class URLController {
 			
 			if(!ctx.containsBean("getRecentAccessedCacheManager")){
 				ctx.register(ChacheConfig.class);
+				ctx.refresh();
+			}else if(!ctx.isActive()){
 				ctx.refresh();
 			}
 		}
