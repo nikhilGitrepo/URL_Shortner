@@ -1,7 +1,4 @@
-
-$(document).ready(function() {
-
-	var pageMap= {
+var pageMap= {
 	     URL_MAPS : 'UrlProcess/js/urlmaps/urlmaps.jsp',
 	     HOME : 'HOME',
 	     BACK_HOME : 'backHome',
@@ -9,7 +6,7 @@ $(document).ready(function() {
 	     URL_FAILURE : 'UrlProcess/js/submissionResult/submissionResultFailed.jsp'
 	    	 };
 
-	    	
+$(document).ready(function() {    	
     $(".nav-urlator").click(function(e){
     e.preventDefault();
     	if(this.id == pageMap.HOME || this.id == pageMap.BACK_HOME ){
@@ -72,12 +69,16 @@ $(document).ready(function() {
     	console.log("longurl:"+lUrl);
     	console.log("id:"+ desiredId);
     	
+    	//now parse returned JSON...
+    	var jsonSuccess =  '{"submitResult": {"creationResult": true, "createdId": "ourSite.com?id=myDesiredID", "longUrl": "http://longURL.com/longasldfadfagoijwigjalsdkgjalsdg"}}'
+    	var jsonFailed = '{"submitResult": {"creationResult": false,"errors": ["desired Id is already taken","Could Not Access the db","etc..."]}}'
     	
-    	//Need to query backend for success or failure
-    	if(true){
-    		$('#mainPanel').load(pageMap.URL_SUCCESS);
+    	jsonObj = JSON.parse(jsonFailed);	
+    	
+    	if(jsonObj.submitResult.creationResult){
+    		parseSuccessfulCreation(jsonObj);
     	}else{
-    		$('#mainPanel').load(pageMap.URL_FAILURE);
+    		parseFailedCreation(jsonObj);
     	}   	
     	
     });
@@ -104,11 +105,28 @@ $(document).ready(function() {
     		return true;
     	}
     	e.preventDefault();
-    	return false;
-    	
-    	
+    	return false;    	
     });
-    
-    
-
 });
+//TODO CLEAN UP THIS PAGE
+function parseSuccessfulCreation(jsonObj) {	
+	$('#mainPanel').load(pageMap.URL_SUCCESS, function(data){		
+		$('#urlSuccess').append("<a href="+jsonObj.submitResult.createdId+">"+jsonObj.submitResult.createdId+"</a>");
+		$('#urlSuccess').append("<p></p>");
+		$('#urlSuccess').append("<p>Created FROM</p>");
+		$('#urlSuccess').append("<p></p>");
+		$('#urlSuccess').append("<a href="+jsonObj.submitResult.longUrl+">"+jsonObj.submitResult.longUrl+"</a>");
+});
+}
+//TODO: CLEAN UP THIS PAGE
+function parseFailedCreation(jsonObj){
+	$('#mainPanel').load(pageMap.URL_FAILURE, function(data){		
+		$('#urlFailed').append("We're sorry, your URL creation failed with the following errors:")
+		$('#urlFailed').append("<p></p>");
+		for(x in jsonObj.submitResult.errors)
+		{
+			$('#urlFailed').append("<p>"+jsonObj.submitResult.errors[x]+"</p>");
+		}
+	});
+	
+}

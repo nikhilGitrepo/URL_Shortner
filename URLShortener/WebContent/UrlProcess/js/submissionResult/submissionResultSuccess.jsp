@@ -1,3 +1,4 @@
+<div class="contentPanel" id="mainSuccPanel">
 <div class="row">
 <div class="col-md-4">
 	<div class="panel panel-success">
@@ -5,7 +6,6 @@
 			<h3 class="panel-title">Shortened URL ready!</h3>
 		</div>
 		<div class="panel-body" id="urlSuccess" style="height: 180px;">
-			<p align="center">your shortURL</p>
 			</div>
 		</div>
 		</div><!--  column -->
@@ -18,5 +18,6 @@
 		<img src="http://www.magicandmayhemwriters.com/wp-content/uploads/2011/04/your_ad_here_banner.jpg" style="width:304px;height:228px;">
 		</div><!-- column -->
 		<button type="submit" id="backHome" class="btn nav-urlator btn-default">Make another!</button>		
+	</div>
 	</div>
 <script src="UrlProcess/js/UrlatorClient.js"></script>

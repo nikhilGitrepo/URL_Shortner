@@ -4,9 +4,7 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">URL Could not be Shortened</h3>
 		</div>
-		<div class="panel-body" id="urlSuccess" style="height: 180px;">
-			<p align="center">Errors</p>
-			<p> reasons URL Couldn't be shortened
+		<div class="panel-body" id="urlFailed" style="height: 180px;">
 			</div>
 		</div>
 		</div><!--  column -->
