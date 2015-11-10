@@ -6,6 +6,11 @@ var pageMap= {
 	     URL_FAILURE : 'UrlProcess/js/submissionResult/submissionResultFailed.jsp'
 	    	 };
 
+function parallax(jumboHeight){
+    var scrolled = $(window).scrollTop();
+    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+}
+
 $(document).ready(function() {    	
     $(".nav-urlator").click(function(e){
     e.preventDefault();
@@ -13,9 +18,17 @@ $(document).ready(function() {
     		$('#mainPanel').load(location.href+'#mainPanel');
     		loadRecentUrl();
     	}else{
+    		
     		$("#mainPanel").load(pageMap[this.id]);
-    	}
-     });
+    	}    	
+    });
+    
+    var jumboHeight = $('.jumbotron').outerHeight();
+
+
+    $(window).scroll(function(e){
+        parallax(jumboHeight);
+    });
     
     //Submits url and displays the panel based on success or fail
     $(".urlBtn").click(function(e) {

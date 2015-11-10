@@ -20,7 +20,7 @@
 <link href="UrlProcess/css/base.css" rel="stylesheet">
 </head>
 <body onload="loadRecentUrl();">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -79,9 +79,12 @@
 		<div id="mainPanel">
 			<div class="contentPanel" role="main">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
-				<div class="jumbotron">
+			<div class = "bg"></div>
+				<div class="jumbotron masthead">
+				<div class = "container">
 					<h1>URL Shortener</h1>
 					<p class="lead">Presenting custom shortened url links</p>
+				</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-4">
