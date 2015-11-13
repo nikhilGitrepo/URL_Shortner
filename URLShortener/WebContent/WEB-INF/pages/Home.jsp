@@ -79,7 +79,7 @@
 		<div id="mainPanel">
 			<div class="contentPanel" role="main">
 				<!-- Main jumbotron for a primary marketing message or call to action -->
-			<div class = "bg"></div>
+				<div class = "bg"></div>
 				<div class="jumbotron masthead">
 				<div class = "container">
 					<h1>URL Shortener</h1>
@@ -88,7 +88,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-4">
-						<form:form action="control.urlview">
+						<form:form action="addurl.urlview">
 							<div class="form-group lurlInput" id="inputDiv">
 								<label for="lurlInput">URL</label> <input type="text"
 									placeholder="Long URL" name="longUrl.url" class="form-control"

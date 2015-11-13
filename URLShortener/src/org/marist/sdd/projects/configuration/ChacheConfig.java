@@ -3,6 +3,7 @@
  */
 package org.marist.sdd.projects.configuration;
 
+import org.marist.sdd.projects.cache.RecentCreatedCacheManager;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -11,8 +12,8 @@ import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
-import org.marist.sdd.projects.cache.RecentCreatedCacheManager;
+
+import net.sf.ehcache.Status;
 
 @Configurable
 @EnableCaching
@@ -21,20 +22,20 @@ public class ChacheConfig {
 
 	@Bean
 	public RecentCreatedCacheManager getRecentAccessedCacheManager(){
-		System.out.println("getRecentAccessedCacheManager()");
 		return new RecentCreatedCacheManager();
 	}
 	
 	@Bean
 	public CacheManager getEhCacheManager(){
-		System.out.println("getEhCacheManager()");
-		return new EhCacheCacheManager( getEhCacheFactory().getObject() );
-		
+		if(net.sf.ehcache.CacheManager.getInstance().getCache("serverEhCache").getStatus().equals(Status.STATUS_ALIVE)){
+			return new EhCacheCacheManager( net.sf.ehcache.CacheManager.getInstance() );
+		}else{
+			return new EhCacheCacheManager( getEhCacheFactory().getObject() );
+		}
 	}
 	
 	@Bean
 	public EhCacheManagerFactoryBean getEhCacheFactory(){
-		System.out.println("getEhCacheFactory()");
 		EhCacheManagerFactoryBean factoryBean = new EhCacheManagerFactoryBean();
 		factoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
 		factoryBean.setShared(true);

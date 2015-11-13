@@ -1,7 +1,10 @@
 package org.marist.sdd.projects.controller;
 
+import org.marist.sdd.projects.configuration.AppConfig;
 import org.marist.sdd.projects.configuration.ChacheConfig;
+import org.marist.sdd.projects.model.ShortUrl;
 import org.marist.sdd.projects.pojo.URLHolder;
+import org.marist.sdd.projects.transaction.UrlShortenerServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -18,16 +21,22 @@ public class URLController {
 	@Autowired
 	AnnotationConfigApplicationContext ctx;
 	
+	@Autowired
+	UrlShortenerServiceDao urlDao;
+	
 	@RequestMapping("redirect.urlview")
 	public ModelAndView returnView(){
 		ModelAndView mav = new ModelAndView("Home");
+		CacheManager.ALL_CACHE_MANAGERS.clear();
 		
 		if(!ctx.isActive()){
-			
+			//AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 			if(!ctx.containsBean("getRecentAccessedCacheManager")){
 				ctx.register(ChacheConfig.class);
+				ctx.register(AppConfig.class);
 				ctx.refresh();
 			}else if(!ctx.isActive()){
+				ctx.register(AppConfig.class);
 				ctx.refresh();
 			}
 		}
@@ -38,6 +47,15 @@ public class URLController {
 	@RequestMapping("addurl.urlview")
 	public ModelAndView handleView(@ModelAttribute URLHolder urlHolder){
 		ModelAndView mav = new ModelAndView("Home");
+		
+		try {
+			ShortUrl shUrl = urlDao.addUrl(urlHolder);
+			mav.addObject("shUrl", shUrl);
+			mav.addObject("newUrlAdded", true);
+		} catch (Exception e) {
+			mav.addObject("newUrlAdded", false);
+			e.printStackTrace();
+		}
 		return mav;
 	}
 

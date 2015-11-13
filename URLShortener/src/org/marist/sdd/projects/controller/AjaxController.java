@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.marist.sdd.projects.cache.RecentCreatedCacheManager;
-import org.marist.sdd.projects.configuration.ChacheConfig;
 import org.marist.sdd.projects.pojo.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,7 +28,6 @@ public class AjaxController {
 
 		List<URL> recentShortUrl = new ArrayList<URL>();
 		
-		System.out.println("--AJAX Call--");
 		if (ctx.isActive()) {
 			if (ctx.containsBean("getRecentAccessedCacheManager")) {
 				manager = ctx.getBean(RecentCreatedCacheManager.class);

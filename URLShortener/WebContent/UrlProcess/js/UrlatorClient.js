@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
     
     //Submits url and displays the panel based on success or fail
-    $(".urlBtn").click(function(e) {
+/*    $(".urlBtn").click(function(e) {
     	var lUrl="";
     	var desiredId="";
     	
@@ -94,7 +94,7 @@ $(document).ready(function() {
     		parseFailedCreation(jsonObj);
     	}   	
     	
-    });
+    });*/
     
     
     //Limit id inputs to alphanumeric and _ only
