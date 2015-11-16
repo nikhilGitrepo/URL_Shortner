@@ -1,20 +1,27 @@
+/**
+ * 
+ */
 package org.marist.sdd.projects.cache;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.marist.sdd.projects.pojo.URL;
+import org.marist.sdd.projects.pojo.URLDuo;
 import org.marist.sdd.projects.transaction.UrlShortenerServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
-public class RecentCreatedCacheManager {
-
+/**
+ * @author Nikhil
+ *
+ */
+public class ApplicationCache {
+	
 	@Autowired
 	UrlShortenerServiceDao urlDao;
 	
-	public RecentCreatedCacheManager() {
+	public ApplicationCache() {
 	}
 
 	@Cacheable("serverEhCache")
@@ -27,6 +34,11 @@ public class RecentCreatedCacheManager {
 		}
 				
 		return recentShortUrl;
+	}
+	
+	@Cacheable("allCachedUrl")
+	public List<URLDuo> loadAllUrl() {
+		return urlDao.loadAllUrl();
 	}
 
 }

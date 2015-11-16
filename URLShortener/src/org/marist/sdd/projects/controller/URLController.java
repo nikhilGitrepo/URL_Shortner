@@ -45,7 +45,7 @@ public class URLController {
 	}
 	
 	@RequestMapping("addurl.urlview")
-	public ModelAndView handleView(@ModelAttribute URLHolder urlHolder){
+	public ModelAndView shortenNewUrl(@ModelAttribute URLHolder urlHolder){
 		ModelAndView mav = new ModelAndView("Home");
 		
 		try {

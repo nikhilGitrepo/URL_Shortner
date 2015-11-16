@@ -10,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +20,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="URLDuo")
+@NamedQueries({
+	@NamedQuery(
+	name = "findAllUrlsINDatabase",
+	query = "from URLDuo"
+	)
+})
 public class URLDuo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +36,7 @@ public class URLDuo implements Serializable{
 	
 	private String shortUrl;
 	private Date dateCreated;
-
+	
 	public URLDuo() {
 	}
 

@@ -15,11 +15,11 @@ $(document).ready(function() {
     $(".nav-urlator").click(function(e){
     e.preventDefault();
     	if(this.id == pageMap.HOME || this.id == pageMap.BACK_HOME ){
-    		$('#mainPanel').load(location.href+'#mainPanel');
+    		$('#mainPanel').load(location.href);
     		loadRecentUrl();
-    	}else{
-    		
-    		$("#mainPanel").load(pageMap[this.id]);
+    	}else if(this.id == 'URL_MAPS' ){
+    			$("#mainPanel").load(pageMap[this.id]);
+    			loadUrlMaps();
     	}    	
     });
     
@@ -142,4 +142,24 @@ function parseFailedCreation(jsonObj){
 		}
 	});
 	
+}
+
+function loadUrlMaps(){
+	$.ajax({
+		type : 'GET',
+		dataType : 'JSON',
+		url : 'loadAll.ajax',
+		success : function(data) {
+			$.each(data, function(i, item) {
+				if (i == '@items') {
+					var htmldiv = "";
+					var htmldiv = "";
+					$.each(item, function(j, link) {
+						htmldiv += "<tr><td><a href='" + link.shortUrl + "'>" + link.shortUrl + "</a></td><td>&nbsp;"+link.desiredId+"&nbsp;</td></tr>";
+				});
+				$("#urlMap").append(htmldiv);
+		}
+	});
+	}
+	});
 }

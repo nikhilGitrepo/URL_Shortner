@@ -41,11 +41,11 @@
 				<form:form action="addurl.urlview" class="navbar-form navbar-right">
 					<div class="form-group lurlInput">
 
-						<input type="text" placeholder="URL" id="lurlInput" class="form-control">
+						<input type="text" placeholder="URL" id="lurlInput" name="longUrl.url" class="form-control">
 					</div>
 					<div class="form-group idInput">
 
-						<input type="text" id="idInput" placeholder="Desired ID" class="form-control">
+						<input type="text" id="idInput" name="desiredId" placeholder="Desired ID" class="form-control">
 					</div>
 					<button type="submit" id="navSubmit" class="btn urlBtn btn-success">Shorten!</button>
 					

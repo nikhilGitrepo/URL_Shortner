@@ -5,18 +5,12 @@
   <!-- Table -->
   <table class="table">
   	<thead>
-  		<th> Rank</th>
   		<th> Link </th>
   		<th> ID </th>
   		<th> Clicks</th>
   	</thead>
   	<tbody>
-  		<tr>
-  			<th> 1</td>
-  			<td> long link displays here </td>
-  			<td> id goes here<th>
-  			<td> 131<th>
-  		</tr>
+  		<div id="urlMap"></div>
   	</tbody>
     
   </table>

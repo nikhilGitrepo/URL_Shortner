@@ -3,7 +3,7 @@
  */
 package org.marist.sdd.projects.configuration;
 
-import org.marist.sdd.projects.cache.RecentCreatedCacheManager;
+import org.marist.sdd.projects.cache.ApplicationCache;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -21,8 +21,8 @@ import net.sf.ehcache.Status;
 public class ChacheConfig {
 
 	@Bean
-	public RecentCreatedCacheManager getRecentAccessedCacheManager(){
-		return new RecentCreatedCacheManager();
+	public ApplicationCache getApplicationCacheManager(){
+		return new ApplicationCache();
 	}
 	
 	@Bean
