@@ -5,6 +5,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class HibernateUtil {
+	
+	public HibernateUtil() {
+	}
 
 	@Autowired
 	private SessionFactory sessionFactory;

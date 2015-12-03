@@ -1,8 +1,12 @@
 package org.marist.sdd.projects.controller;
 
+import java.util.List;
+
+import org.marist.sdd.projects.cache.ApplicationCache;
 import org.marist.sdd.projects.configuration.AppConfig;
 import org.marist.sdd.projects.configuration.ChacheConfig;
 import org.marist.sdd.projects.model.ShortUrl;
+import org.marist.sdd.projects.pojo.URLDuo;
 import org.marist.sdd.projects.pojo.URLHolder;
 import org.marist.sdd.projects.transaction.UrlShortenerServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import net.sf.ehcache.CacheManager;
 @Controller
 public class URLController {
 	
+	ApplicationCache manager;
 
 	@Autowired
 	AnnotationConfigApplicationContext ctx;
@@ -48,6 +53,11 @@ public class URLController {
 	public ModelAndView shortenNewUrl(@ModelAttribute URLHolder urlHolder){
 		ModelAndView mav = new ModelAndView("Home");
 		
+		List<String> allDesiredId = manager.loadAllDesiredId();
+		if(allDesiredId.contains(urlHolder.getDesiredId())){
+			mav.addObject("newUrlAdded", false);
+		}
+			
 		try {
 			ShortUrl shUrl = urlDao.addUrl(urlHolder);
 			mav.addObject("shUrl", shUrl);

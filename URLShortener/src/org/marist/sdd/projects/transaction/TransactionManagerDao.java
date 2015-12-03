@@ -13,5 +13,7 @@ public interface TransactionManagerDao {
 	public boolean addUrl(URLDuo url);
 
 	public List<URLDuo> loadAllUrl();
+	
+	public List<String> loadAllDesiredId();
 
 }

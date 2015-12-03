@@ -55,6 +55,7 @@ public class UrlShortenerService extends HibernateUtil  implements UrlShortenerS
 				
 				net.sf.ehcache.CacheManager.getInstance().clearAllStartingWith("serverEhCache");
 				net.sf.ehcache.CacheManager.getInstance().clearAllStartingWith("allCachedUrl");
+				net.sf.ehcache.CacheManager.getInstance().clearAllStartingWith("cachedDesiredId");
 				
 			}
 			
@@ -68,6 +69,11 @@ public class UrlShortenerService extends HibernateUtil  implements UrlShortenerS
 	@Override
 	public List<URLDuo> loadAllUrl() {
 		return transactionDao.loadAllUrl();
+	}
+
+	@Override
+	public List<String> loadAllDesiredId() {
+		return transactionDao.loadAllDesiredId();
 	}
 	
 }

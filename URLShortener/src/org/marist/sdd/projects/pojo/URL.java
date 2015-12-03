@@ -1,7 +1,9 @@
 package org.marist.sdd.projects.pojo;
 
-public class URL {
+import java.io.Serializable;
 
+public class URL implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String url;
 	private String domainType;
 

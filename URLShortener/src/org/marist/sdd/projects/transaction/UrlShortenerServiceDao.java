@@ -14,5 +14,7 @@ public interface UrlShortenerServiceDao {
 	public ShortUrl addUrl(URLHolder urlholder);
 
 	public List<URLDuo> loadAllUrl();
+	
+	public List<String> loadAllDesiredId();
 
 }

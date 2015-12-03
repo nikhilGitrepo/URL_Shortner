@@ -17,27 +17,30 @@ import org.springframework.stereotype.Repository;
 @Repository("TransactionDao")
 public class TransactionManager extends HibernateUtil implements TransactionManagerDao {
 
+	public TransactionManager() {
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> getRecentUrl() {
 		Session session = getSession();
-		session.beginTransaction();
+		session.getTransaction().begin();
 		Criteria cr = session.createCriteria(URLDuo.class);
 		cr.setProjection(Projections.property("shortUrl"));
 		cr.addOrder((Order.desc("dateCreated")));
 		cr.setMaxResults(10);
 		
 		List<String> urls = cr.list();
-		
+
 		return urls;
 	}
 
 	@Override
 	public boolean addUrl(URLDuo url) {
 
+		Session session = getSession();
 		try {
-			Session session = getSession();
-			session.beginTransaction();
+			session.getTransaction().begin();
 
 			session.saveOrUpdate(url);
 			
@@ -45,6 +48,7 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 			
 			return true;
 		} catch (Exception e) {
+			session.getTransaction().rollback();
 			e.printStackTrace();
 		}
 		return false;
@@ -55,8 +59,8 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 	public List<URLDuo> loadAllUrl() {
 		List<URLDuo> allUrl = new ArrayList<URLDuo>();
 		
+		Session session = getSession();
 		try {
-			Session session = getSession();
 			session.getTransaction().begin();
 
 			Query query = session.getNamedQuery("findAllUrlsINDatabase");
@@ -65,8 +69,19 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return allUrl;
+	}
+
+	@Override
+	public List<String> loadAllDesiredId() {
+		List<String> allDesiredId = new ArrayList<String>();
+		Session session = getSession();
+		session.getTransaction().begin();
+		Criteria cr = session.createCriteria(URLDuo.class);
+		cr.setProjection(Projections.property("desiredId"));
+		
+		allDesiredId = cr.list();
+		return allDesiredId;
 	}
 	
 }

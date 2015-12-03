@@ -41,4 +41,9 @@ public class ApplicationCache {
 		return urlDao.loadAllUrl();
 	}
 
+	@Cacheable("cachedDesiredId")
+	public List<String> loadAllDesiredId() {
+		return urlDao.loadAllDesiredId();
+	}
+	
 }
