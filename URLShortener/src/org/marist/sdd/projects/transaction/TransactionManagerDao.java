@@ -2,8 +2,6 @@ package org.marist.sdd.projects.transaction;
 
 import java.util.List;
 
-import org.marist.sdd.projects.model.ShortUrl;
-import org.marist.sdd.projects.model.URLMap;
 import org.marist.sdd.projects.pojo.URLDuo;
 
 public interface TransactionManagerDao {

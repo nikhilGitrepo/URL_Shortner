@@ -6,14 +6,11 @@ import javax.transaction.Transactional;
 
 import org.marist.sdd.projects.constants.ApplicationConstants;
 import org.marist.sdd.projects.model.ShortUrl;
-import org.marist.sdd.projects.model.URLMap;
 import org.marist.sdd.projects.pojo.URL;
 import org.marist.sdd.projects.pojo.URLDuo;
 import org.marist.sdd.projects.pojo.URLHolder;
 import org.marist.sdd.projects.util.HibernateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;

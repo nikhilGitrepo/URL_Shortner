@@ -8,10 +8,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-import org.marist.sdd.projects.model.URLMap;
 import org.marist.sdd.projects.pojo.URLDuo;
 import org.marist.sdd.projects.util.HibernateUtil;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 @Repository("TransactionDao")
