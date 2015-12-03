@@ -1,12 +1,10 @@
 package org.marist.sdd.projects.controller;
 
 import java.util.List;
-
 import org.marist.sdd.projects.cache.ApplicationCache;
 import org.marist.sdd.projects.configuration.AppConfig;
 import org.marist.sdd.projects.configuration.ChacheConfig;
 import org.marist.sdd.projects.model.ShortUrl;
-import org.marist.sdd.projects.pojo.URLDuo;
 import org.marist.sdd.projects.pojo.URLHolder;
 import org.marist.sdd.projects.transaction.UrlShortenerServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,8 @@ import net.sf.ehcache.CacheManager;
 
 @Controller
 public class URLController {
-	
+	private final String resultSuccessPage = "submissionResultSuccess";
+	private final String resultFailurePage = "submissionResultFailed"; 
 	ApplicationCache manager;
 
 	@Autowired
@@ -51,7 +50,7 @@ public class URLController {
 	
 	@RequestMapping("addurl.urlview")
 	public ModelAndView shortenNewUrl(@ModelAttribute URLHolder urlHolder){
-		ModelAndView mav = new ModelAndView("Home");
+		ModelAndView mav = new ModelAndView(resultSuccessPage);
 		
 		List<String> allDesiredId = manager.loadAllDesiredId();
 		if(allDesiredId.contains(urlHolder.getDesiredId())){
@@ -62,7 +61,12 @@ public class URLController {
 			ShortUrl shUrl = urlDao.addUrl(urlHolder);
 			mav.addObject("shUrl", shUrl);
 			mav.addObject("newUrlAdded", true);
+			//if there was some error in the creation, then set the failure page as view
+			if(!shUrl.isSuccess()){
+				mav.setViewName(resultFailurePage);
+			}			
 		} catch (Exception e) {
+			mav.setViewName(resultFailurePage);
 			mav.addObject("newUrlAdded", false);
 			e.printStackTrace();
 		}

@@ -1,16 +1,16 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading">URL Maps</div>
 
   <!-- Table -->
   <table class="table">
   	<thead>
-  		<th> Link </th>
-  		<th> ID </th>
-  		<th> Clicks</th>
+  		<th>Short URL</th>
+  		<th>URL ID</th>
+  		<th>Long URL</th>
   	</thead>
-  	<tbody>
-  		<div id="urlMap"></div>
+  	<tbody id="urlMap">
+  		
   	</tbody>
     
   </table>

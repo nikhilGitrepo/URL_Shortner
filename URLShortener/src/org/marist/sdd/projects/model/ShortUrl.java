@@ -40,7 +40,7 @@ public class ShortUrl implements Serializable{
 		this.shortUrl = shortUrl;
 	}
 
-	public boolean isError() {
+	public boolean isSuccess() {
 		return error;
 	}
 
