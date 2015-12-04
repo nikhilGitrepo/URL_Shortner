@@ -52,9 +52,16 @@ public class URLController {
 	public ModelAndView shortenNewUrl(@ModelAttribute URLHolder urlHolder){
 		ModelAndView mav = new ModelAndView(resultSuccessPage);
 		
+		if (ctx.isActive()) {
+			if (ctx.containsBean("getApplicationCacheManager")) {
+				manager = ctx.getBean(ApplicationCache.class);
+			}
+		}
+		
 		List<String> allDesiredId = manager.loadAllDesiredId();
 		if(allDesiredId.contains(urlHolder.getDesiredId())){
 			mav.addObject("newUrlAdded", false);
+			mav.setViewName(resultFailurePage);
 		}
 			
 		try {

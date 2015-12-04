@@ -11,7 +11,7 @@ function loadRecentUrl() {
 					var htmldiv = "<table id='recentUrlTable'><tbody>";
 					$.each(item, function(j, link) {
 						//$.each(link, function(i, link) {
-							htmldiv += "<tr><td>&nbsp;"+count+"&nbsp;</td><td><a href='" + link.url + "'>" + link.url + "</a></td></tr>";
+							htmldiv += "<tr><td>&nbsp;"+count+"&nbsp;</td><td><a target='_blank' href='" + link.url + "'>" + link.url + "</a></td></tr>";
 							count+=1;
 						//});
 				});
