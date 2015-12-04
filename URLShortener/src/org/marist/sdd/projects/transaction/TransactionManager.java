@@ -22,13 +22,19 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 	@Override
 	public List<String> getRecentUrl() {
 		Session session = getSession();
-		session.getTransaction().begin();
-		Criteria cr = session.createCriteria(URLDuo.class);
-		cr.setProjection(Projections.property("shortUrl"));
-		cr.addOrder((Order.desc("dateCreated")));
-		cr.setMaxResults(10);
-		
-		List<String> urls = cr.list();
+		List<String> urls = new ArrayList<String>();
+		try{
+			session.getTransaction().begin();
+			Criteria cr = session.createCriteria(URLDuo.class);
+			cr.setProjection(Projections.property("shortUrl"));
+			cr.addOrder((Order.desc("dateCreated")));
+			cr.setMaxResults(10);
+			urls = cr.list();
+		} catch (RuntimeException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+	
 
 		return urls;
 	}
@@ -45,9 +51,9 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 			session.getTransaction().commit();
 			
 			return true;
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			session.getTransaction().rollback();
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
 		return false;
 		
@@ -63,10 +69,13 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 
 			Query query = session.getNamedQuery("findAllUrlsINDatabase");
 			allUrl = (List<URLDuo>) query.list();
+			session.getTransaction().commit();
 			
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			e.printStackTrace();
+			session.getTransaction().rollback();
 		}
+		
 		return allUrl;
 	}
 
@@ -74,11 +83,15 @@ public class TransactionManager extends HibernateUtil implements TransactionMana
 	public List<String> loadAllDesiredId() {
 		List<String> allDesiredId = new ArrayList<String>();
 		Session session = getSession();
-		session.getTransaction().begin();
-		Criteria cr = session.createCriteria(URLDuo.class);
-		cr.setProjection(Projections.property("desiredId"));
-		
-		allDesiredId = cr.list();
+		try{
+			session.getTransaction().begin();
+			Criteria cr = session.createCriteria(URLDuo.class);
+			cr.setProjection(Projections.property("desiredId"));
+			allDesiredId = cr.list();
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
 		return allDesiredId;
 	}
 	

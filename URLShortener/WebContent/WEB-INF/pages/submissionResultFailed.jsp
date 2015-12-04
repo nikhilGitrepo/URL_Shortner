@@ -5,7 +5,7 @@
 				<h3 class="panel-title">URL Could not be Shortened</h3>
 			</div>
 			<div class="panel-body" id="urlFailed" style="height: 180px;">
-				<p>${shUrl.message}</p>
+				<p> Desired Id is already in use</p>
 			</div>
 		</div>
 	</div>

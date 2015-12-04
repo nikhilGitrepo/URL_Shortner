@@ -12,7 +12,10 @@ public abstract class HibernateUtil {
 	@Autowired
 	private SessionFactory sessionFactory;
 	 
-    protected Session getSession() {
+    protected synchronized Session getSession() {
+    	if(sessionFactory.getCurrentSession() == null){
+    		return sessionFactory.openSession();
+    	}
         return sessionFactory.getCurrentSession();
     }
  
